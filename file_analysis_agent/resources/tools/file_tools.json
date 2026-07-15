@@ -1,0 +1,90 @@
+{
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "list_dir",
+        "description": "List direct children of a workspace directory in stable order.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "description": "Workspace-relative directory path, defaulting to the workspace root."
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "search_text",
+        "description": "Recursively search UTF-8 text files for a keyword.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "keyword": {
+              "type": "string",
+              "description": "Non-empty text to find."
+            },
+            "path": {
+              "type": "string",
+              "description": "Workspace-relative directory path."
+            }
+          },
+          "required": ["keyword"],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "read_file",
+        "description": "Read a bounded 1-based line range from a UTF-8 file.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "filepath": {
+              "type": "string",
+              "description": "Workspace-relative file path."
+            },
+            "start_line": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "First line to return, defaulting to 1."
+            },
+            "end_line": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Last line to return, inclusive."
+            }
+          },
+          "required": ["filepath"],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "call_subagent",
+        "description": "Ask one independent bounded subagent to investigate a focused question.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "task": {
+              "type": "string",
+              "description": "A focused read-only question for the subagent."
+            }
+          },
+          "required": ["task"],
+          "additionalProperties": false
+        }
+      }
+    }
+  ]
+}
